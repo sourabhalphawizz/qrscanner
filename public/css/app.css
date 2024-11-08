@@ -105,7 +105,7 @@
   --tw-contain-paint:  ;
   --tw-contain-style:  ;
 }/*
-! tailwindcss v3.4.13 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.14 | MIT License | https://tailwindcss.com
 *//*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -496,7 +496,7 @@ video {
 }
 
 /* Make elements with the HTML hidden attribute stay hidden by default */
-[hidden] {
+[hidden]:where(:not([hidden="until-found"])) {
   display: none;
 }
     a,
@@ -3288,6 +3288,9 @@ input:checked + div svg {
 .mt-4 {
   margin-top: 1rem;
 }
+.mt-5 {
+  margin-top: 1.25rem;
+}
 .mt-8 {
   margin-top: 2rem;
 }
@@ -3597,6 +3600,9 @@ input:checked + div svg {
 .grid-cols-\[repeat\(auto-fill\2c _minmax\(140px\2c _1fr\)\)\] {
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 }
+.flex-row {
+  flex-direction: row;
+}
 .flex-col {
   flex-direction: column;
 }
@@ -3875,6 +3881,10 @@ input:checked + div svg {
 .bg-\[\#8262FE\] {
   --tw-bg-opacity: 1;
   background-color: rgb(130 98 254 / var(--tw-bg-opacity));
+}
+.bg-\[\#9C27B0\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 39 176 / var(--tw-bg-opacity));
 }
 .bg-\[\#A953FF\] {
   --tw-bg-opacity: 1;

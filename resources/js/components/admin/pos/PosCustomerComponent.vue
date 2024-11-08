@@ -1,6 +1,6 @@
 <template>
     <div id="customerModal" class="modal">
-        <div class="modal-dialog max-w-[840px]">
+        <div class="modal-dialog modal-dialog-centered max-w-[840px]">
             <div class="modal-header hidden-print">
                 <h3 class="drawer-title">{{ $t("menu.customers") }}</h3>
                 <button class="fa-solid fa-xmark close-btn" @click="reset"></button>
@@ -19,7 +19,7 @@
                             }}</small>
                         </div>
 
-                        <div class="form-col-12 sm:form-col-6">
+                        <div class="form-col-12 sm:form-col-6" style="display: none;">
                             <label for="email" class="db-field-title required">{{
                                 $t("label.email")
                             }}</label>
@@ -50,7 +50,7 @@
                             </small>
                         </div>
 
-                        <div class="form-col-12 sm:form-col-6">
+                        <div class="form-col-12 sm:form-col-6" style="display: none;">
                             <label class="db-field-title required" for="active">
                                 {{ $t("label.status") }}
                             </label>
@@ -80,7 +80,8 @@
                                 errors.status[0]
                             }}</small>
                         </div>
-                        <div class="form-col-12 sm:form-col-6">
+
+                        <div class="form-col-12 sm:form-col-6" style="display: none;">
                             <label for="password" class="db-field-title required">{{
                                 $t("label.password")
                             }}</label>
@@ -90,7 +91,8 @@
                                 errors.password[0]
                             }}</small>
                         </div>
-                        <div class="form-col-12 sm:form-col-6">
+
+                        <div class="form-col-12 sm:form-col-6" style="display: none;">
                             <label for="password_confirmation" class="db-field-title required">{{
                                 $t("label.confirm_password")
                             }}</label>
@@ -101,6 +103,7 @@
                                 errors.password_confirmation[0]
                             }}</small>
                         </div>
+
                         <div class="form-col-12">
                             <div class="flex flex-wrap gap-3 mt-4">
                                 <button type="submit" class="db-btn py-2 text-white bg-primary">
@@ -189,9 +192,9 @@ export default {
             this.errors = {};
             this.props.form = {
                 name: "",
-                email: "",
+                cemail: "",
                 phone: "",
-                password: "",
+                cpassword: "",
                 password_confirmation: "",
                 status: statusEnum.ACTIVE,
                 country_code: this.country_code,
@@ -199,6 +202,9 @@ export default {
         },
 
         save: function () {
+
+            console.log(' this.props ', this.props)
+
             try {
                 this.loading.isActive = true;
                 this.$store

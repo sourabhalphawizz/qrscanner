@@ -1300,6 +1300,7 @@ body {
 .first_checkout-card-recomennded .food_card_img {
     width: 85px;
     height: 85px;
+    margin: 0 auto;
 }
 
 .plus-btn-for-recom {
@@ -1499,13 +1500,13 @@ input:focus-within, select:focus-within, textarea:focus-within {
 @media(max-width:992px) {
     div#swiper-wrapper a{
         height: 130px !important;
-    } 
+    }
 }
 
 @media(max-width:768px) {
     div#swiper-wrapper a{
         height: 130px !important;
-    } 
+    }
 }
 button.db-product-cart.pos-add-button {
     background: #e52b50 !important;
@@ -1527,7 +1528,7 @@ button.db-product-cart.pos-add-button i{
   color: #e52b50 !important;
 }
 .db-header {
-    padding: 0.8rem;
+    padding: 0.5rem;
 }
 .addon img {
 	max-width: 70px !important;
@@ -1621,18 +1622,115 @@ button.w-full.h-12.text-center.capitalize.font-medium.rounded-3xl.mb-6.text-whit
     width:0;
     height: 0 !important ;
   }
-  
+
 /* Track */
 .featured-items-sec .div1::-webkit-scrollbar-track {
     background: transparent !important;
   }
-  
+
   /* Handle */
   .featured-items-sec .div1::-webkit-scrollbar-thumb {
     background: transparent !important;
   }
-  
+
   /* Handle on hover */
   .featured-items-sec .div1::-webkit-scrollbar-thumb:hover {
     background: transparent !important;
+  }
+
+  span.card-status {
+    position: absolute;
+    right: 20px;
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
+}
+
+.custom-grid .card-body {
+    position: relative;
+}
+
+span.card-status span {
+    background: #fee2e2;
+    padding: 5px 10px;
+    color: red;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+.card.status {
+    margin: 30px 0;
+}
+
+span.card-status.flex-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+span.card-status.flex-row h4{
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+span.card-status.flex-row.card-stats {
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+span.card-status span.active {
+    background: #dcfce7;
+    color: green;
+}
+
+span.card-status span.progress {
+    background: #fef6e6;
+    color: #f6a609;
+}
+
+.coupon-list {
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 80px;
+    align-items: center;
+}
+
+.coupon-tag {
+    padding: 5px 10px;
+    background: #e42b50;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    display:block;
+}
+
+.dp__main {
+    width: 250px;
+}
+
+.modal-dialog-centered {
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div#sidebar.active {
+    display: block !important;
+}
+
+  /*Responsive-CSS*/
+
+  @media(max-width:767.97px){
+    .bannerview img {
+        height: 330px !important;
+        object-fit: contain;
+        background: linear-gradient(180deg, rgba(252, 252, 254, 1) 34%, rgb(201 190 236) 100%);
+        object-position: bottom;
+    }
   }

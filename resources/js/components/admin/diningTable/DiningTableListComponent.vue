@@ -1,9 +1,29 @@
 <template>
     <LoadingComponent :props="loading" />
 
+
+    <div class="col-12 mt-5">
+        <div class="row align-items-center">
+            <DiningTableCreateComponent :props="props" class="edit-pop" />
+            <div class="card status">
+
+                <div class="card-body">
+
+                    <span class="card-status flex-row card-stats">
+                        <h4>Status :</h4>
+                        <span class="progress">Running Table</span>
+                        <span class="active">Printed Table</span>
+                        <span class="rejected">Running KOT Table</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="col-12">
-        <div class="db-card">
-            <div class="db-card-header border-none">
+        <div class="db-card" style="display: none;"  >
+            <div class="db-card-header border-none" style="display: none;">
                 <h3 class="db-card-title">{{ $t('menu.dining_tables') }}</h3>
                 <div class="db-card-filter">
                     <TableLimitComponent :method="list" :search="props.search" :page="paginationPage" />
@@ -15,11 +35,13 @@
                             <ExcelComponent :method="xls" />
                         </div>
                     </div>
-                    <DiningTableCreateComponent :props="props" />
+
                 </div>
             </div>
 
-            <div class="table-filter-div">
+
+
+            <div class="table-filter-div" style="display:none;">
                 <form class="p-4 sm:p-5 mb-5" @submit.prevent="search">
                     <div class="row">
                         <div class="col-12 sm:col-6 md:col-4 xl:col-3">
@@ -64,29 +86,29 @@
                 </form>
             </div>
 
-            <div class="db-table-responsive">
+            <div class="db-table-responsive" style="display:none;">
                 <table class="db-table stripe" id="print">
                     <thead class="db-table-head">
                         <tr class="db-table-head-tr">
                             <th class="db-table-head-th">{{ $t('label.name') }}</th>
                             <th class="db-table-head-th">{{ $t('label.size') }}</th>
-                            <th class="db-table-head-th">{{ $t('label.status') }}</th>
-                            <th class="db-table-head-th hidden-print"
+                            <!--<th class="db-table-head-th">{{ $t('label.status') }}</th>-->
+                            <!--<th class="db-table-head-th hidden-print"
                                 v-if="permissionChecker('dining_tables_show') || permissionChecker('dining_tables_edit') || permissionChecker('dining_tables_delete')">
                                 {{ $t('label.action') }}
-                            </th>
+                            </th>-->
                         </tr>
                     </thead>
                     <tbody class="db-table-body" v-if="diningTables.length > 0">
                         <tr class="db-table-body-tr" v-for="diningTable in diningTables" :key="diningTable">
                             <td class="db-table-body-td">{{ diningTable.name }}</td>
                             <td class="db-table-body-td">{{ diningTable.size }}</td>
-                            <td class="db-table-body-td">
+                            <!--<td class="db-table-body-td">
                                 <span :class="statusClass(diningTable.status)">
                                     {{ enums.statusEnumArray[diningTable.status] }}
                                 </span>
-                            </td>
-                            <td class="db-table-body-td hidden-print"
+                            </td>-->
+                            <!--<td class="db-table-body-td hidden-print"
                                 v-if="permissionChecker('dining_tables_show') || permissionChecker('dining_tables_edit') || permissionChecker('dining_tables_delete')">
                                 <div class="flex justify-start items-center sm:items-start sm:justify-start gap-1.5">
                                     <SmIconQrCodeComponent :link="diningTable.qr" />
@@ -97,15 +119,15 @@
                                     <SmIconDeleteComponent @click="destroy(diningTable.id)"
                                         v-if="permissionChecker('dining_tables_delete') && demoChecker(diningTable.id)" />
                                 </div>
-                            </td>
+                            </td>-->
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            
 
-            <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-6">
+
+            <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-6" style="display:none;">
                 <PaginationSMBox :pagination="pagination" :method="list" />
                 <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
                     <PaginationTextComponent :props="{ page: paginationPage }" />
@@ -113,10 +135,19 @@
                 </div>
             </div>
         </div>
-        
+
+
+
+
         <div class="row" v-if="diningTables.length > 0">
+
             <div class="card custom-grid">
                 <div class="card-body col-lg-4" v-for="diningTable in diningTables" :key="diningTable">
+                    <span class="card-status">
+                        <!--<span class="progress">Running Table</span>-->
+                        <span class="active">Printed Table</span>
+                        <!--<span class="rejected">Running KOT Table</span>-->
+                    </span>
                     <div class="card-head"><h2>Name : {{ diningTable.name }}</h2></div>
                     <div class="card-head"><h4>Size : {{ diningTable.size }}</h4></div>
                     <div class="card-head action">
@@ -140,10 +171,10 @@
                     </div>
                 </div>
             </div>
-            
 
-           
-            
+
+
+
         </div>
     </div>
 </template>

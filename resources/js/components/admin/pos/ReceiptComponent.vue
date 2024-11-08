@@ -1,6 +1,6 @@
 <template>
     <div id="receiptModal" class="modal">
-        <div class="modal-dialog max-w-[340px] rounded-none" id="print">
+        <div class="modal-dialog modal-dialog-centered max-w-[340px] rounded-none" id="print">
             <div class="modal-header hidden-print">
                 <button type="button" @click="reset"
                     class="modal-close flex items-center justify-center gap-1.5 py-2 px-4 rounded bg-[#FB4E4E]">

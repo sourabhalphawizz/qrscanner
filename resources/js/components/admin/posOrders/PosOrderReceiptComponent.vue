@@ -1,6 +1,6 @@
 <template>
     <div id="receiptModal" class="modal">
-        <div class="modal-dialog max-w-[340px] rounded-none" id="print">
+        <div class="modal-dialog modal-dialog-centered max-w-[340px] rounded-none" id="print">
             <div class="modal-body">
                 <div class="text-center pb-3.5 border-b border-dashed border-gray-400">
                     <h3 class="text-2xl font-bold mb-1">{{ company.company_name }}</h3>
@@ -131,6 +131,7 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script>

@@ -181,13 +181,16 @@
                         </div>
                         <div class="first_checkout-1">
                             <div class="more_item pt-2 pb-2">
-                                <router-link to="" class="text-xs pl-4 font-medium  mb-3 items-center gap-2 ">
+                                <router-link to="javascript:void(0)"
+                                    class="text-xs pl-4 font-medium  mb-3 items-center gap-2 ">
                                     <h2>Add Cooking Request</h2> <svg xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 320 512">
                                         <path
                                             d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                                     </svg>
                                 </router-link>
+                                <textarea name="Add Cooking Request" placeholder="Add Cooking Request" id="" rows="2"
+                                    style="width: 100%;border-radius: 8px;border: 1px solid #efefef;padding:10px;"></textarea>
                             </div>
                         </div>
 
@@ -219,7 +222,7 @@
                         <div class="card-for-recomend">
                             <div class="first_checkout-card-recomennded">
                                 <div class="mb-3 pb-3 border-b last:mb-0 last:pb-0 last:border-b-0 border-gray-2">
-                                    <img src="http://localhost/foodscan/public/storage/109/conversions/Pizza-thumb.png"
+                                    <img src="http://localhost:8000/storage/97/conversions/Frame-2-(3)-thumb.png"
                                         alt="thumbnail" class="food_card_img rounded-lg flex-shrink-0">
                                     <div class="w-full order_detail-card">
                                         <div class="order-name">
@@ -236,7 +239,7 @@
                             </div>
                             <div class="first_checkout-card-recomennded">
                                 <div class="mb-3 pb-3 border-b last:mb-0 last:pb-0 last:border-b-0 border-gray-2">
-                                    <img src="http://localhost/foodscan/public/storage/109/conversions/Pizza-thumb.png"
+                                    <img src="http://localhost:8000/storage/97/conversions/Frame-2-(3)-thumb.png"
                                         alt="thumbnail" class="food_card_img rounded-lg flex-shrink-0">
                                     <div class="w-full order_detail-card">
                                         <div class="order-name">
@@ -253,7 +256,7 @@
                             </div>
                             <div class="first_checkout-card-recomennded">
                                 <div class="mb-3 pb-3 border-b last:mb-0 last:pb-0 last:border-b-0 border-gray-2">
-                                    <img src="http://localhost/foodscan/public/storage/109/conversions/Pizza-thumb.png"
+                                    <img src="http://localhost:8000/storage/97/conversions/Frame-2-(3)-thumb.png"
                                         alt="thumbnail" class="food_card_img rounded-lg flex-shrink-0">
                                     <div class="w-full order_detail-card">
                                         <div class="order-name">
@@ -270,7 +273,7 @@
                             </div>
                             <div class="first_checkout-card-recomennded">
                                 <div class="mb-3 pb-3 border-b last:mb-0 last:pb-0 last:border-b-0 border-gray-2">
-                                    <img src="http://localhost/foodscan/public/storage/109/conversions/Pizza-thumb.png"
+                                    <img src="http://localhost:8000/storage/97/conversions/Frame-2-(3)-thumb.png"
                                         alt="thumbnail" class="food_card_img rounded-lg flex-shrink-0">
                                     <div class="w-full order_detail-card">
                                         <div class="order-name">
@@ -287,7 +290,7 @@
                             </div>
                             <div class="first_checkout-card-recomennded">
                                 <div class="mb-3 pb-3 border-b last:mb-0 last:pb-0 last:border-b-0 border-gray-2">
-                                    <img src="http://localhost/foodscan/public/storage/109/conversions/Pizza-thumb.png"
+                                    <img src="http://localhost:8000/storage/97/conversions/Frame-2-(3)-thumb.png"
                                         alt="thumbnail" class="food_card_img rounded-lg flex-shrink-0">
                                     <div class="w-full order_detail-card">
                                         <div class="order-name">
@@ -305,8 +308,20 @@
                         </div>
                     </div>
 
-                    <div class=" rounded-2xl shadow-xs bg-white p-2">
+
+
+                    <button type="button"
+                        class="hidden md:block w-full rounded-3xl capitalize font-medium leading-6 py-3 text-white bg-primary "
+                        @click="orderSubmit">
+                        {{ $t('button.place_order') }}
+                    </button>
+                </div>
+
+                <div class="col-12 md:col-5">
+                    <div class=" rounded-2xl shadow-xs bg-white p-2 my-4">
+
                         <div class="spply-coopan-sec">
+
                             <h3 class="capitalize font-medium py-2  ">Coupon & Offers</h3>
                             <router-link :to="{ name: 'table.coupons', params: { slug: this.$route.params.slug } }"
                                 class="webcart1">
@@ -325,9 +340,38 @@
                                             stroke-linejoin="round" />
                                     </svg>
                                     View Offer
-                                </button> 
+                                </button>
                             </router-link>
+
                         </div>
+
+                        <div class="coupon-list">
+                            <a href="#  " class="coupon-tag">
+                                #123ABQ
+                            </a>
+                            <a href="#  " class="coupon-tag">
+                                #123ABQ
+                            </a>
+                            <a href="#  " class="coupon-tag">
+                                #123ABQ
+                            </a>
+                            <a href="#  " class="coupon-tag">
+                                #123ABQ
+                            </a>
+                            <a href="#  " class="coupon-tag">
+                                #123ABQ
+                            </a>
+                            <a href="#  " class="coupon-tag">
+                                #123ABQ
+                            </a>
+                            <a href="#  " class="coupon-tag">
+                                #123ABQ
+                            </a>
+                            <a href="#  " class="coupon-tag">
+                                #123ABQ
+                            </a>
+                        </div>
+
                         <div class="spply-coopan-sec">
                             <input type="text"
                                 class="h-10  placeholder:text-[15px]  border-[#D9DBE9] pl-4 coopen-code-text"
@@ -335,14 +379,6 @@
                             <button class="btn btnwhite btn-coupon apply-coopen">Apply</button>
                         </div>
                     </div>
-                    <button type="button"
-                        class="hidden md:block w-full rounded-3xl capitalize font-medium leading-6 py-3 text-white bg-primary "
-                        @click="orderSubmit">
-                        {{ $t('button.place_order') }}
-                    </button>
-                </div>
-
-                <div class="col-12 md:col-5">
                     <div class="rounded-2xl shadow-xs bg-white p-4">
                         <div class="whatsblock">
                             <div>

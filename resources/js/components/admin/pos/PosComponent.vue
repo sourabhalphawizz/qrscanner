@@ -58,7 +58,7 @@
             </div>
             <div class="db-field">
                 <input class="db-field-control text-sm rounded-lg appearance-none text-heading border-[#D9DBE9]"
-                    id="token" v-model="checkoutProps.form.token" :placeholder="$t('label.token_no')" />
+                    id="token" v-model="checkoutProps.form.token" :placeholder="$t('label.token_no')" @onload="generateToken"/>
             </div>
         </div>
         <table class="w-full">
@@ -196,6 +196,10 @@
                     class="capitalize text-sm font-medium leading-6 font-rubik w-full text-center rounded-3xl py-2 text-white bg-[#1AB759]">
                     {{ $t('button.order') }}
                 </button>
+                <button @click.prevent="showPopup"
+                    class="capitalize text-sm font-medium leading-6 font-rubik w-full text-center rounded-3xl py-2 text-white bg-[#9C27B0]">
+                    KOT
+                </button>
             </div>
         </div>
     </div>
@@ -253,7 +257,7 @@ export default {
                 form: {
                     branch_id: null,
                     subtotal: 0,
-                    token: "",
+                    token: new Date().getTime(),
                     customer_id: null,
                     discount: 0,
                     delivery_charge: 0,
@@ -542,6 +546,69 @@ export default {
         resetCart: function () {
             this.$store.dispatch('posCart/resetCart').then(res => {
             }).catch();
+        },
+
+        showPopup: function() {
+
+            _.forEach(this.carts, (item, index) => {
+                let item_variations = [];
+                if (Object.keys(item.item_variations.variations).length > 0) {
+                    _.forEach(item.item_variations.variations, (value, index) => {
+                        item_variations.push({
+                            "id": value,
+                            "item_id": item.item_id,
+                            "item_attribute_id": index,
+                        });
+                    });
+                }
+
+                if (Object.keys(item.item_variations.names).length > 0) {
+                    let i = 0;
+                    _.forEach(item.item_variations.names, (value, index) => {
+                        item_variations[i].variation_name = index;
+                        item_variations[i].name = value;
+                        i++;
+                    });
+                }
+
+                let item_extras = [];
+                if (item.item_extras.extras.length) {
+                    _.forEach(item.item_extras.extras, (value) => {
+                        item_extras.push({
+                            id: value,
+                            item_id: item.item_id,
+                        });
+                    });
+                }
+
+                if (item.item_extras.names.length) {
+                    let i = 0;
+                    _.forEach(item.item_extras.names, (value) => {
+                        item_extras[i].name = value;
+                        i++;
+                    });
+                }
+
+                this.checkoutProps.form.items.push({
+                    item_id: item.item_id,
+                    item_price: item.convert_price,
+                    branch_id: this.checkoutProps.form.branch_id,
+                    instruction: item.instruction,
+                    quantity: item.quantity,
+                    discount: item.discount,
+                    total_price: item.total,
+                    item_variation_total: item.item_variation_total,
+                    item_extra_total: item.item_extra_total,
+                    item_variations: item_variations,
+                    item_extras: item_extras
+                });
+            });
+            this.checkoutProps.form.items = JSON.stringify(this.checkoutProps.form.items);
+
+            appService.modalShow('#receiptModal');
+        },
+        generateToken: function() {
+            this.checkoutProps.form.token = new Date().getTime();
         },
         orderSubmit: function () {
             this.loading.isActive = true;

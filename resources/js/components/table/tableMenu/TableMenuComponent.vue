@@ -4,7 +4,6 @@
             <div class="col-sm-12 text-center">
                 <div class="bannerview">
                     <img src="../../../../../public/images/topimage.gif" />
-
                 </div>
             </div>
         </div>
